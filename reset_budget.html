@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Budget — MyWallet</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+  <div class="container">
     <aside class="sidebar">
-      <h2>MyWallet</h2>
+      <div class="sidebar-brand">
+        <div class="brand-icon">💰</div>
+        <h2>MyWallet</h2>
+      </div>
       <nav>
-        <a href="main.html"><img class="icon" src="asset/dashboard (1).png"> Dashboard</a>
-        <a href="add_income.html"><img src="asset/services.png" class="icon"> Add Income</a>
-        <a href="add_expense.html"><img src="asset/spending.png" class="icon"> Add Expense</a>
-        <a href="view_all_exp.html"><img src="asset/research.png" class="icon"> View All</a>
-        <a href="reset_budget.html" class="active"><img src="asset/circle-of-two-clockwise-arrows-rotation.png" class="icon"> Reset</a>
+        <a href="main.html"><img class="nav-icon" src="asset/dashboard (1).png" alt=""> Dashboard</a>
+        <a href="add_income.html"><img class="nav-icon" src="asset/services.png" alt=""> Add Income</a>
+        <a href="add_expense.html"><img class="nav-icon" src="asset/spending.png" alt=""> Add Expense</a>
+        <a href="view_all_exp.html"><img class="nav-icon" src="asset/research.png" alt=""> View All</a>
+        <a href="reset_budget.html" class="active"><img class="nav-icon" src="asset/circle-of-two-clockwise-arrows-rotation.png" alt=""> Reset</a>
       </nav>
     </aside>
-    <div class="reset">
-        <h2>Reset Budget</h2>
-        <p>This will delete all income and expenses.</p>
-        <button onclick="confirmReset()">Reset Now</button>
-    </div>
-    <script>
-        function confirmReset() {
-            if (confirm("Are you sure you want to reset your budget?")) {
-                const user_id = localStorage.getItem("user_id");
-        
-                fetch(`http://localhost:8080/reset_budget?user_id=${user_id}`, {
-                    method: "POST"
-                })
-                .then(res => res.text())
-                .then(msg => alert(msg))
-                .catch(err => alert("Reset failed: " + err));
-            }
-        }
-        </script>
-        
 
+    <main class="main">
+      <header class="topbar">
+        <h1>Reset Budget</h1>
+        <button id="logoutBtn">Sign out</button>
+      </header>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-tag reset-tag">Danger Zone</span>
+          <h2>Reset everything</h2>
+          <p>This will permanently delete all your income and expense records.</p>
+        </div>
+
+        <div class="reset-warning">
+          ⚠️ <span>This action <strong>cannot be undone</strong>. All your financial data will be wiped.</span>
+        </div>
+
+        <button class="btn btn-danger" onclick="confirmReset()" style="padding:0.9rem 1.5rem; font-size:1rem; font-weight:700; border-radius:10px;">
+          Reset All Data
+        </button>
+        <p class="error-msg" id="reset-msg" style="margin-top:1rem;"></p>
+      </div>
+    </main>
+  </div>
+  <script>
+    // Auth guard
+    const userId = localStorage.getItem("user_id");
+    if (!userId) window.location.href = "index.html";
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user_id");
+      window.location.href = "index.html";
+    });
+
+    async function confirmReset() {
+      if (!confirm("Are you sure you want to reset your entire budget? This cannot be undone.")) return;
+      const msg = document.getElementById("reset-msg");
+      try {
+        const res = await fetch(`http://localhost:8080/reset_budget?user_id=${userId}`, { method: "POST" });
+        const text = await res.text();
+        msg.style.color = "var(--green)";
+        msg.textContent = "✓ " + (text || "Budget reset successfully.");
+      } catch (err) {
+        msg.style.color = "var(--red)";
+        msg.textContent = "Reset failed: " + err.message;
+      }
+    }
+  </script>
 </body>
 </html>

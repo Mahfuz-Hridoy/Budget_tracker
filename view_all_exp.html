@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Expenses</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Expenses — MyWallet</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+  <div class="container">
     <aside class="sidebar">
-      <h2>MyWallet</h2>
+      <div class="sidebar-brand">
+        <div class="brand-icon">💰</div>
+        <h2>MyWallet</h2>
+      </div>
       <nav>
-        <a href="main.html"><img class="icon" src="asset/dashboard (1).png"> Dashboard</a>
-        <a href="add_income.html" ><img src="asset/services.png" class="icon"> Add Income</a>
-        <a href="add_expense.html"><img src="asset/spending.png" class="icon"> Add Expense</a>
-        <a href="view_all_exp.html" class="active"><img src="asset/research.png" class="icon"> View All</a>
-        <a href="reset_budget.html"><img src="asset/circle-of-two-clockwise-arrows-rotation.png" class="icon"> Reset</a>
+        <a href="main.html"><img class="nav-icon" src="asset/dashboard (1).png" alt=""> Dashboard</a>
+        <a href="add_income.html"><img class="nav-icon" src="asset/services.png" alt=""> Add Income</a>
+        <a href="add_expense.html"><img class="nav-icon" src="asset/spending.png" alt=""> Add Expense</a>
+        <a href="view_all_exp.html" class="active"><img class="nav-icon" src="asset/research.png" alt=""> View All</a>
+        <a href="reset_budget.html"><img class="nav-icon" src="asset/circle-of-two-clockwise-arrows-rotation.png" alt=""> Reset</a>
       </nav>
     </aside>
-    <div class="showexp">
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Expenses</h1>
+        <button id="logoutBtn">Sign out</button>
+      </header>
+
+      <div class="expense-list-panel">
         <h2>All Expenses</h2>
-        <ul id="expenseList">[Expenses will be listed here]</ul>
-    </div>
-    <script src="view_all_exp.js"></script> <!-- FIXED -->
+        <p class="subtitle">A full record of your spending history.</p>
+        <ul id="expenseList">
+          <li><span class="loading-state"><span class="spinner"></span> Loading expenses…</span></li>
+        </ul>
+      </div>
+    </main>
+  </div>
+  <script src="view_all_exp.js"></script>
 </body>
 </html>

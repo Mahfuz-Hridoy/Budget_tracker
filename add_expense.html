@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Expences</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Expense — MyWallet</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+  <div class="container">
     <aside class="sidebar">
-      <h2>MyWallet</h2>
+      <div class="sidebar-brand">
+        <div class="brand-icon">💰</div>
+        <h2>MyWallet</h2>
+      </div>
       <nav>
-        <a href="main.html"><img class="icon" src="asset/dashboard (1).png"> Dashboard</a>
-        <a href="add_income.html"><img src="asset/services.png" class="icon"> Add Income</a>
-        <a href="add_expense.html" class="active"><img src="asset/spending.png" class="icon"> Add Expense</a>
-        <a href="view_all_exp.html"><img src="asset/research.png" class="icon"> View All</a>
-        <a href="reset_budget.html"><img src="asset/circle-of-two-clockwise-arrows-rotation.png" class="icon"> Reset</a>
+        <a href="main.html"><img class="nav-icon" src="asset/dashboard (1).png" alt=""> Dashboard</a>
+        <a href="add_income.html"><img class="nav-icon" src="asset/services.png" alt=""> Add Income</a>
+        <a href="add_expense.html" class="active"><img class="nav-icon" src="asset/spending.png" alt=""> Add Expense</a>
+        <a href="view_all_exp.html"><img class="nav-icon" src="asset/research.png" alt=""> View All</a>
+        <a href="reset_budget.html"><img class="nav-icon" src="asset/circle-of-two-clockwise-arrows-rotation.png" alt=""> Reset</a>
       </nav>
     </aside>
-    <div class="addexpense">
-        <h2>Add Expense</h2>
-        <form>
-        <label for="expenseName">Expense Name:</label>
-            <input type="text" id="expenseName" name="expenseName" required >
-        <label for="expense">Expense Amount:</label>
-            <input type="number" id="expense" name="expense" required>
-        <button type="submit">Add Expense</button>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Add Expense</h1>
+        <button id="logoutBtn">Sign out</button>
+      </header>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-tag expense-tag">Expense</span>
+          <h2>Record spending</h2>
+          <p>Log an expense to keep your budget accurate.</p>
+        </div>
+
+        <form class="form-stack" id="expense-form" novalidate>
+          <div class="form-field">
+            <label for="expenseName">Expense Name</label>
+            <input type="text" id="expenseName" name="expenseName" placeholder="e.g. Groceries, Rent" required>
+          </div>
+          <div class="form-field">
+            <label for="expense">Amount (Tk)</label>
+            <input type="number" id="expense" name="expense" placeholder="e.g. 1200" min="0.01" step="0.01" required>
+          </div>
+          <button type="submit" class="form-submit">Add Expense</button>
+          <div class="success-message" id="success-msg">✓ Expense added successfully!</div>
+          <p class="error-msg" id="error-msg"></p>
         </form>
-    </div>
-    <script src="addexp.js"></script>
+      </div>
+    </main>
+  </div>
+  <script src="addexp.js"></script>
 </body>
 </html>

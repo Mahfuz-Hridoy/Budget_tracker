@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Colorful Dashboard</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — MyWallet</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
-      <h2>MyWallet</h2>
+      <div class="sidebar-brand">
+        <div class="brand-icon">💰</div>
+        <h2>MyWallet</h2>
+      </div>
       <nav>
-        <a href="main.html" class="active"><img class="icon" src="asset/dashboard (1).png"> Dashboard</a>
-        <a href="add_income.html"><img src="asset/services.png" class="icon"> Add Income</a>
-        <a href="add_expense.html"><img src="asset/spending.png" class="icon"> Add Expense</a>
-        <a href="view_all_exp.html"><img src="asset/research.png" class="icon"> View All</a>
-        <a href="reset_budget.html"><img src="asset/circle-of-two-clockwise-arrows-rotation.png" class="icon"> Reset</a>
+        <a href="main.html" class="active">
+          <img class="nav-icon" src="asset/dashboard (1).png" alt=""> Dashboard
+        </a>
+        <a href="add_income.html">
+          <img class="nav-icon" src="asset/services.png" alt=""> Add Income
+        </a>
+        <a href="add_expense.html">
+          <img class="nav-icon" src="asset/spending.png" alt=""> Add Expense
+        </a>
+        <a href="view_all_exp.html">
+          <img class="nav-icon" src="asset/research.png" alt=""> View All
+        </a>
+        <a href="reset_budget.html">
+          <img class="nav-icon" src="asset/circle-of-two-clockwise-arrows-rotation.png" alt=""> Reset
+        </a>
       </nav>
+      <div class="sidebar-footer">
+        <span class="version">MyWallet v1.0</span>
+      </div>
     </aside>
 
     <main class="main">
       <header class="topbar">
-  <h1>Dashboard</h1>
-  <button id="logoutBtn">Logout</button>
-</header>
-
+        <h1>Dashboard</h1>
+        <div class="topbar-actions">
+          <span class="greeting" id="greeting">Good day!</span>
+          <button id="logoutBtn">Sign out</button>
+        </div>
+      </header>
 
       <section class="cards">
         <div class="card income">
-          <h3>Total Income</h3>
-          <p id="incomeAmt">$0</p>
+          <div class="card-icon">💵</div>
+          <div class="card-label">Total Income</div>
+          <div class="card-amount" id="incomeAmt">—</div>
         </div>
         <div class="card expense">
-          <h3>Total Expense</h3>
-          <p id="expenseAmt">$0</p>
+          <div class="card-icon">💸</div>
+          <div class="card-label">Total Expense</div>
+          <div class="card-amount" id="expenseAmt">—</div>
         </div>
         <div class="card balance">
-          <h3>Balance</h3>
-          <p id="balanceAmt">$0</p>
+          <div class="card-icon">📊</div>
+          <div class="card-label">Balance</div>
+          <div class="card-amount" id="balanceAmt">—</div>
         </div>
       </section>
     </main>

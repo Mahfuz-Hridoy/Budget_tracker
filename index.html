@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Tracker Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker — Sign In</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="login-container">
-        <form id="login-form">
-        <h1>Login</h1>
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+  <main class="auth-page">
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <div class="logo-mark">💰</div>
+          <span>MyWallet</span>
         </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <h1>Welcome back</h1>
+        <p class="auth-sub">Sign in to manage your finances with clarity.</p>
+
+        <form class="auth-form" id="login-form" novalidate>
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="username">
+          </div>
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="auth-submit">Sign in</button>
+          <p id="error-message"></p>
+        </form>
+
+        <p class="auth-footer">
+          Don't have an account? <a href="registration.html">Create one</a>
+        </p>
+      </div>
+    </section>
+
+    <aside class="auth-side">
+      <div class="auth-side-content">
+        <span class="side-tag">Budget Tracker</span>
+        <h2>Smart money, clear picture.</h2>
+        <p>Track income, monitor spending, and understand your financial health — all in one clean, focused dashboard.</p>
+        <div class="feature-list">
+          <div class="feat"><span class="feat-dot"></span>Real-time balance tracking</div>
+          <div class="feat"><span class="feat-dot"></span>Expense categorisation</div>
+          <div class="feat"><span class="feat-dot"></span>Clean, modern interface</div>
         </div>
-        <div class="form-group">
-            <button type="submit">Login</button>
-        </div>
-        <div class="form-group">
-            <p>Don't have an account? <a href="registration.html">Register here</a></p>
-        </div>
-        <div class="form-group">
-            <p id="error-message"></p>
-        </div>
-    </form>
-    </div>
-    <script src="login.js"></script>
+      </div>
+    </aside>
+  </main>
+  <script src="login.js"></script>
 </body>
 </html>
